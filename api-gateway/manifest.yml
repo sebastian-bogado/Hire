@@ -1,0 +1,10 @@
+---
+applications:
+- name: api-gateway
+  memory: 1024M
+  instances: 1
+  host: api-gateway
+  domain: nsuconsulting.com
+  services:
+  - eureka
+  - config-server

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.nsu.hire</groupId>
+	<artifactId>api-modulizer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>api-authserver</module>
+		<module>api-candidates</module>
+		<module>api-catalog</module>
+		<module>api-clients</module>
+		<module>api-config</module>
+		<module>api-gateway</module>
+		<module>api-recruiters</module>
+		<module>api-search</module>
+		<module>api-tags</module>
+		<module>api-users</module>
+		<module>eureka-server</module>
+		<module>hystrix-dashboard</module>
+	</modules>
+</project>

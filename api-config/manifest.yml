@@ -1,0 +1,6 @@
+---
+applications:
+- name: api-config
+  memory: 512M
+  host: api-config
+  domain: nsuconsulting.com
