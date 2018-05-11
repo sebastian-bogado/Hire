@@ -26,7 +26,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		http
 				.csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/**").authenticated();
+				.antMatchers("/api/**").authenticated();
 		//.antMatchers(HttpMethod.GET, "/").hasAuthority("TEST");
 		//.antMatchers(HttpMethod.POST, "/foo").hasAuthority("FOO_WRITE");
 		//you can implement it like this, but I show method invocation security on write
