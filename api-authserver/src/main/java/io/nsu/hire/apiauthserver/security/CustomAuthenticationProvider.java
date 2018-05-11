@@ -1,6 +1,8 @@
 package io.nsu.hire.apiauthserver.security;
 
-import com.nsu.duhire.webapi.authserver.model.Permission;
+import io.nsu.hire.apiauthserver.cnfg.PasswordEncoderHelper;
+import io.nsu.hire.apiauthserver.rest.dto.PermissionDTO;
+import io.nsu.hire.apiauthserver.rest.dto.UserDTO;
 import io.nsu.hire.apiauthserver.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -22,11 +24,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
 		String username = authentication.getPrincipal().toString();
-		String password = authentication.getCredentials().toString();
-		UserDTO user = userService.readUserByEmail(username).orElseThrow(() -> new BadCredentialsException("1000")); //TODO change exception
-		List<Permission> authorities = new ArrayList<>();
-		user.getRoles().forEach(role -> authorities.addAll(role.getPermissions()));
-		return new UsernamePasswordAuthenticationToken(username, password, authorities);
+		String password = PasswordEncoderHelper.getPasswordEncoder().encode(authentication.getCredentials().toString());
+		UserDTO user = userService.readUserByEmail(username).orElseThrow(() -> new BadCredentialsException("1000"));
+		List<PermissionDTO> authorities = new ArrayList<>();
+		user.getRoles().forEach(role -> authorities.addAll(role.getPermissionList()));
+		return new UsernamePasswordAuthenticationToken(user, password, authorities);
 
 	}
 

@@ -1,6 +1,6 @@
 package io.nsu.hire.apiauthserver.cnfg;
 
-import com.nsu.duhire.webapi.authserver.security.CustomAuthenticationProvider;
+import io.nsu.hire.apiauthserver.security.CustomAuthenticationProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

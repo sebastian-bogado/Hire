@@ -1,5 +1,7 @@
 package io.nsu.hire.apiauthserver.cnfg;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -19,10 +21,12 @@ public class JwtConfiguration {
 	@Autowired
 	private JwtAccessTokenConverter jwtAccessTokenConverter;
 
+	private static final Logger LOG = LoggerFactory.getLogger(JwtConfiguration.class);
+
 	@Bean
 	@Qualifier("tokenStore")
 	public TokenStore tokenStore() {
-		System.out.println("Created JwtTokenStore");
+		LOG.info("Created JwtTokenStore");
 		return new JwtTokenStore(jwtAccessTokenConverter);
 	}
 
