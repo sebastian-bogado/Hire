@@ -1,11 +1,11 @@
-package io.nsu.hire.apiauthserver.rest.dto;
+package io.nsu.hire.apiusers.controller.dto;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UserDTO {
+public class UserAuthenticatedDTO {
 	private String name;
 	private String lastName;
 	private String email;

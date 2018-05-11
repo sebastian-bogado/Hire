@@ -119,6 +119,11 @@ public class UserServiceImpl extends LogicalDeleteableBeanService<User> implemen
 		return createDefaultProfileUser(user, RECRUITER);
 	}
 
+	@Override
+	public Optional<User> readUserByEmailAndPassword(String username, String password) {
+		return userDao.findUserByEmail(username);
+	}
+
 	protected User createDefaultProfileUser(User user, String defaultRole) {
 		String formatedRole = defaultRole.toLowerCase().trim();
 		Role role = roleService.readRoleByName(formatedRole).orElseThrow(() -> {

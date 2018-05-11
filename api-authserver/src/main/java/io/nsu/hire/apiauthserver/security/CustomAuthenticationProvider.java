@@ -25,7 +25,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		String username = authentication.getPrincipal().toString();
 		String password = PasswordEncoderHelper.getPasswordEncoder().encode(authentication.getCredentials().toString());
-		UserDTO user = userService.readUserByEmail(username).orElseThrow(() -> new BadCredentialsException("1000"));
+		UserDTO user = userService.authenticateUser(username,password).orElseThrow(() -> new BadCredentialsException("1000"));
 		List<PermissionDTO> authorities = new ArrayList<>();
 		user.getRoles().forEach(role -> authorities.addAll(role.getPermissionList()));
 		return new UsernamePasswordAuthenticationToken(user, password, authorities);

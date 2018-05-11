@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users/admin")
+@RequestMapping("/api/admin")
 public class UserAdminRestController {
 
 	@Autowired

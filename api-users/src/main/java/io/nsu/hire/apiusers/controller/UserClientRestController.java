@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users/client")
+@RequestMapping("/api/client")
 public class UserClientRestController {
 
 	@Autowired
@@ -28,12 +28,6 @@ public class UserClientRestController {
 	@PreAuthorize("hasAuthority('GET_CLIENT_LIST_USER')")
 	public List<UserListDTO> readClientUsers(@RequestParam("active") Boolean active) {
 		return orikaMapper.mapAsList(userService.readAllClientUsers(active), UserListDTO.class);
-	}
-
-	@GetMapping(params = "email")
-	@PreAuthorize("hasAnyAuthority('CLIENT_SERVER','ADMINISTRATOR')")
-	public UserDTO readUserByEmail(@NotNull @RequestParam("email") String email) {
-		return orikaMapper.map(userService.readUserByEmail(email).orElseThrow(() -> new UserNotFoundException(email)), UserDTO.class);
 	}
 
 

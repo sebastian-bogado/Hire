@@ -43,4 +43,6 @@ public interface UserService {
 	User createAdminUser(User user);
 
 	User createRecruiterUser(User user);
+
+	Optional<User> readUserByEmailAndPassword(String username, String password);
 }

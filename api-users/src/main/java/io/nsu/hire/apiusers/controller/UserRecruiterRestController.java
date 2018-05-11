@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users/recruiter")
+@RequestMapping("/api/recruiter")
 public class UserRecruiterRestController {
 
 	@Autowired
@@ -22,7 +22,7 @@ public class UserRecruiterRestController {
 	private MapperFacade orikaMapper;
 
 	@GetMapping("/active")
-	@PreAuthorize("hasAuthority('GET_CLIENT_LIST_USER')")
+	@PreAuthorize("hasAuthority('GET_RECRUITER_LIST_USER')")
 	public List<UserListDTO> readRecruiterUser(@RequestParam("active") Boolean active) {
 		return orikaMapper.mapAsList(userService.readAllRecruiterUsers(active), UserListDTO.class);
 	}
