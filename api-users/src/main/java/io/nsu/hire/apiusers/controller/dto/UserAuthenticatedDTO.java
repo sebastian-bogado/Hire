@@ -9,5 +9,6 @@ public class UserAuthenticatedDTO {
 	private String name;
 	private String lastName;
 	private String email;
+	private String password;
 	private List<RoleDTO> roles;
 }

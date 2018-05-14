@@ -121,7 +121,18 @@ public class UserServiceImpl extends LogicalDeleteableBeanService<User> implemen
 
 	@Override
 	public Optional<User> readUserByEmailAndPassword(String username, String password) {
-		return userDao.findUserByEmail(username);
+		Optional<User> user = userDao.findUserByEmail(username);
+		if(!user.isPresent()) {
+			return Optional.empty();
+		}
+		if(passwordEncoder.matches(password,user.get().getPassword())) {
+			user.get().addBadLogin();
+			user.get().setLocked(Integer.valueOf(3).equals(user.get().getBadLogin()));
+		} else {
+			user.get().restoreBadLogin();
+		}
+		return Optional.of(userDao.save(user.get()));
+
 	}
 
 	protected User createDefaultProfileUser(User user, String defaultRole) {

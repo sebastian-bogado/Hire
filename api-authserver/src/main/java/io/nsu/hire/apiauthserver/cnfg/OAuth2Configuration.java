@@ -31,19 +31,14 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 				.scopes("SERVER")
 				.authorities("INFO_SERVER")
 				.and()
-				.withClient("client-server")
-				.secret("client-server-password")
-				.scopes("SERVER")
-				.authorities("CLIENT_SERVER")
-				.and()
 				.withClient("web_app")
 				.scopes("CLIENT")
 				.autoApprove(true)
-				.authorizedGrantTypes("client_credentials", "implicit", "refresh_token", "password", "authorization_code");
+				.authorizedGrantTypes("client_credentials","implicit", "refresh_token", "password", "authorization_code");
 	}
 
 	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.tokenStore(tokenStore()).tokenEnhancer(jwtTokenEnhancer()).authenticationManager(authenticationManager);
 	}
 

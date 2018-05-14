@@ -26,4 +26,11 @@ public class User extends LogicalDeleteableBean {
 	@NotNull
 	private Integer badLogin;
 
+	public void addBadLogin() {
+		this.badLogin++;
+	}
+
+	public void restoreBadLogin() {
+		this.badLogin=0;
+	}
 }
