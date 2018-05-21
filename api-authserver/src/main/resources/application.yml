@@ -10,5 +10,3 @@ logging:
      org:
        springframework:
          security: DEBUG
-server:
-  port: 9999

@@ -1,6 +1,6 @@
 package io.nsu.hire.apiclients.dao;
 
-import com.nsu.duhire.webapi.client.model.TimestampBean;
+import io.nsu.hire.apiclients.model.TimestampBean;
 
-public interface TimestampBeanDao<T extends TimestampBean> extends JpaRepository<T, Long > {
+public interface TimestampBeanDao<T extends TimestampBean> {
 }

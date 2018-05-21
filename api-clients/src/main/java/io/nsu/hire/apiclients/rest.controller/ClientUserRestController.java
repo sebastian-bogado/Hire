@@ -5,7 +5,7 @@ import com.nsu.duhire.webapi.info.exception.UserExistException;
 import com.nsu.duhire.webapi.info.exception.client.ClientExistException;
 import com.nsu.duhire.webapi.info.model.Client;
 import com.nsu.duhire.webapi.info.model.User;
-import com.nsu.duhire.webapi.info.service.client.ClientUserService;
+import io.nsu.hire.apiclients.service.ClientService;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/client/user")
 public class ClientUserRestController {
 	@Autowired
-	private ClientUserService clientUserService;
+	private ClientService clientUserService;
 	@Autowired
 	private MapperFacade orikaMapper;
 

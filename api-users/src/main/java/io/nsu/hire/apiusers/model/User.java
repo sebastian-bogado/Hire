@@ -3,18 +3,28 @@ package io.nsu.hire.apiusers.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 public class User extends LogicalDeleteableBean {
 
+	@NotNull
+	@NotEmpty
 	private String name;
+	@NotNull
+	@NotEmpty
 	private String lastName;
+	@NotNull
+	@NotEmpty
 	private String email;
+	@NotNull
+	@NotEmpty
 	private String password;
+	@NotNull
 	private Date lastLogin;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role",
@@ -31,6 +41,6 @@ public class User extends LogicalDeleteableBean {
 	}
 
 	public void restoreBadLogin() {
-		this.badLogin=0;
+		this.badLogin = 0;
 	}
 }

@@ -51,6 +51,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and()
 				.authorizeRequests()
+				.antMatchers("/login", "/oauth/token", "/oauth/authorize").permitAll()
 				.antMatchers("/api/**").authenticated()
 				.and()
 				.httpBasic();
