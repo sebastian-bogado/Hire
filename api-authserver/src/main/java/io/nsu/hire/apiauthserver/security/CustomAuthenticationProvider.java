@@ -5,6 +5,7 @@ import io.nsu.hire.apiauthserver.rest.dto.UserDTO;
 import io.nsu.hire.apiauthserver.rest.service.UserService;
 import io.nsu.hire.apiauthserver.security.helper.PasswordEncoderHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,9 +17,8 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 @Component
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+public class CustomAuthenticationProvider  implements AuthenticationProvider  {
 	private PasswordEncoder passwordEncoder = PasswordEncoderHelper.getBCryptPasswordEncoder();
 
 	@Autowired

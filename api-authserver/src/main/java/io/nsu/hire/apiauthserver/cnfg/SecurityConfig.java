@@ -1,5 +1,7 @@
+/*
 package io.nsu.hire.apiauthserver.cnfg;
 
+import com.google.common.collect.ImmutableList;
 import io.nsu.hire.apiauthserver.security.CustomAuthenticationProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,18 +12,17 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import javax.servlet.http.HttpServletResponse;
-
+@Order(-1)
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-	Logger log = LoggerFactory.getLogger(WebSecurityConfig.class);
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
 	@Autowired
 	private CustomAuthenticationProvider customAuthenticationProvider;
@@ -49,11 +50,12 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.csrf().disable()
-				.authorizeRequests()
-				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.and()
 				.exceptionHandling()
-				.authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+				//.authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+				.and()
+				.authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS, "/login", "/oauth/token", "/oauth/authorize").permitAll()
+				.antMatchers("/api/**").authenticated()
 				.and()
 				.httpBasic();
 	}
@@ -63,5 +65,32 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(this.customAuthenticationProvider);
 	}
 
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		final CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(ImmutableList.of("*"));
+		configuration.setAllowedMethods(ImmutableList.of("HEAD",
+				"GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+		configuration.setAllowCredentials(true);
+		configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Content-Type"));
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
+
+	*/
+/*@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().disable()
+				.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/oauth/token", "/oauth/authorize", "/login").permitAll();
+	}
+
+	*//*
+
+
+
 
 }
+*/
