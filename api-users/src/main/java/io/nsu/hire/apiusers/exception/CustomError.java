@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CustomError {
 
-	private Integer code;
+	private String code;
 	private String message;
 	private String description;
 	private Integer status;

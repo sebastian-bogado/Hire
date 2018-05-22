@@ -1,6 +1,7 @@
 package io.nsu.hire.apiclients.model;
 
 import lombok.Data;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,7 +9,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
-public class Client extends BaseBean {
+@SQLDelete(sql = "UPDATE TABLE CLIENT SET active = false WHERE id = ?")
+public class Client extends LogicalDeleteableBean {
 
 	@NotNull
 	@NotEmpty

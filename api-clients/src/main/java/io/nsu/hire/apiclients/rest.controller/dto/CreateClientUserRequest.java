@@ -1,8 +1,8 @@
 package io.nsu.hire.apiclients.rest.controller.dto;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -23,7 +23,7 @@ public class CreateClientUserRequest {
 	@NotNull
 	private ContactDTO contactDTO;
 	@NotNull
-	private Long petitionId;
+	private String petitionId;
 	@NotNull
 	@NotEmpty
 	private String password;

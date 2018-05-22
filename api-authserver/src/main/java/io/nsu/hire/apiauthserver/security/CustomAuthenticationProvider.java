@@ -30,7 +30,7 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider  {
 		String password = (String) authentication.getCredentials();
 		Optional<UserDTO> user = userService.authenticateUser(username, password);
 		if(!user.isPresent()){
-			throw new BadCredentialsException("Tu vieja en tanga para la banda");
+			throw new BadCredentialsException("Error intentando de obtener las credentials");
 		}
 		Set<PermissionDTO> authorities = user.get().getRoles().stream()
 																				.flatMap(roleDTO -> roleDTO.getPermissions().stream())

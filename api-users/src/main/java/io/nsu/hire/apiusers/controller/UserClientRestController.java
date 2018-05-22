@@ -26,7 +26,6 @@ public class UserClientRestController {
 	private MapperFacade orikaMapper;
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('GET_CLIENT_LIST_USER')")
 	public List<UserListDTO> readClientUsers(@RequestParam("active") Boolean active) {
 		return orikaMapper.mapAsList(userService.readAllClientUsers(active), UserListDTO.class);
 	}
@@ -40,6 +39,5 @@ public class UserClientRestController {
 	public UserDTO updateClientUser(@RequestBody @NotNull @Valid UpdateUserRequestDTO request) {
 		return orikaMapper.map(userService.updateUser(orikaMapper.map(request, User.class)), UserDTO.class);
 	}
-
 
 }

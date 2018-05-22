@@ -1,4 +1,4 @@
-package io.nsu.hire.apiusers.exception;
+package io.nsu.hire.apiclients.exception;
 
 import org.springframework.http.HttpStatus;
 

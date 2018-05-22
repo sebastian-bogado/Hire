@@ -5,11 +5,17 @@ import io.nsu.hire.apiclients.vo.UserVO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
 
-    List<Client> readAllClients();
-    Page<Client> readAllClients(Integer size, Integer page);
-    Client createClient(Client client, UserVO userVO);
+	List<Client> readClients();
 
+	Page<Client> readClients(Integer size, Integer page);
+
+	Optional<Client> readClientById(Long id);
+
+	Client createClient(Client client);
+
+	void deleteClient(Long id);
 }
