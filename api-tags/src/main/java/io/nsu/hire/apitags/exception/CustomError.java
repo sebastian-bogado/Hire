@@ -1,4 +1,4 @@
-package io.nsu.hire.apiclients.exception;
+package io.nsu.hire.apitags.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

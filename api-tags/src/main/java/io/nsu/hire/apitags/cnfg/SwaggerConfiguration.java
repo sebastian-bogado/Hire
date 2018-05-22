@@ -1,4 +1,4 @@
-package io.nsu.hire.apiclients.cnfg;
+package io.nsu.hire.apitags.cnfg;
 
 
 import com.google.common.base.Predicate;
@@ -24,7 +24,7 @@ public class SwaggerConfiguration {
 				.useDefaultResponseMessages(false)
 				.select()
 				.apis(RequestHandlerSelectors.any())
-				.apis(RequestHandlerSelectors.basePackage("io.nsu.hire.apiclients.rest.controller"))
+				.apis(RequestHandlerSelectors.basePackage("io.nsu.hire.apiusers.rest"))
 				.paths(paths()).build()
 				.apiInfo(apiInfo());
 	}
