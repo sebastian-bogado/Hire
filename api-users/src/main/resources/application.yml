@@ -1,0 +1,13 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+
+
+##spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=build/duhire.sql
+##spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+#URLS
+##duhire.email.server=http://localhost:9091/api/email
+##duhire.confirm_client_user.server=http://localhost:9090/api/petition/client/confirm/
