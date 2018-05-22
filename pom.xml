@@ -8,7 +8,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>api-authserver</module>
-		<module>auth-server</module>
 		<module>api-candidates</module>
 		<module>api-catalog</module>
 		<module>api-clients</module>
