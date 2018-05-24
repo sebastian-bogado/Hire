@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/countries")
@@ -31,7 +30,6 @@ public class CountryRestController {
 			@ApiResponse(code = 401, message = "You dont have access to this resource"),
 			@ApiResponse(code = 403, message = "You dont have permissions to access to this source")})
 	@GetMapping
-	@ResponseBody
 	public List<CountryDTO> getAllCountries() {
 		return mapperFacade.mapAsList(countryService.getCountries(), CountryDTO.class);
 	}
@@ -40,7 +38,6 @@ public class CountryRestController {
 	@ApiResponses(value = {
 			@ApiResponse(code=200,message = "The country was deleted")
 	})
-	@ResponseBody
 	public CountryDTO getCountry(@PathVariable("id") @NotNull Long id) {
 		return mapperFacade.map(countryService.getCountryById(id).orElseThrow(() -> new CountryNotFoundException(id.toString())), CountryDTO.class);
 	}
@@ -55,7 +52,6 @@ public class CountryRestController {
 			@ApiResponse(code = 401, message = "You dont have access to this resource"),
 			@ApiResponse(code = 403, message = "You dont have permissions to access to this source")})
 	@PutMapping
-	@ResponseBody
 	public CountryDTO updateArea(@RequestBody @Valid CountryDTO countryDTO) {
 		return mapperFacade.map(countryService.updateCountry(mapperFacade.map(countryDTO, Country.class)), CountryDTO.class);
 	}
@@ -64,7 +60,6 @@ public class CountryRestController {
 			@ApiResponse(code=204,message = "The country was deleted")
 	})
 	@DeleteMapping(value= "/{id}")
-	@ResponseBody
 	public void deleteCountry(@PathVariable("id") @NotNull Long id) {
 		countryService.deleteCountry(id);
 	}
