@@ -1,8 +1,7 @@
-package io.nsu.hire.apiclients.handler;
+package io.nsu.hire.apitags.handler;
 
-
-import io.nsu.hire.apiclients.exception.BusinessException;
-import io.nsu.hire.apiclients.exception.CustomError;
+import io.nsu.hire.apitags.exception.BusinessException;
+import io.nsu.hire.apitags.exception.CustomError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,7 +18,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-@RestControllerAdvice("io.nsu.hire.apiclients.rest.controller")
+@RestControllerAdvice("io.nsu.hire.apitags.rest.controller")
 public class ExceptionHandler {
 
 	@Autowired
@@ -50,12 +48,13 @@ public class ExceptionHandler {
 
 	private Map<String, String> onExceptionHandler(BindingResult bindingResult) {
 		Map<String, String> errors = new HashMap<>();
-		for (ObjectError error : bindingResult.getAllErrors()) {
+		bindingResult.getAllErrors().forEach(error ->{
 			if (error instanceof FieldError) {
 				errors.put(((FieldError) error).getField(), messageSource.getMessage(error, Locale.getDefault()));
 			}
-		}
+		});
 		return errors;
 	}
+
 
 }
