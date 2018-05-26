@@ -3,7 +3,7 @@ package io.nsu.hire.apiclients.model;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -24,9 +24,10 @@ public class Client extends LogicalDeleteableBean {
 	@NotNull
 	@NotEmpty
 	private String email;
-	@Enumerated(EnumType.STRING)
-	private CompanySizeEnum companySize;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@NotNull
+	@NotEmpty
+	private String companySize;
+	@NotNull
 	private Long sectorId;
 	@NotNull
 	@NotEmpty
