@@ -10,6 +10,7 @@
 		<module>api-authserver</module>
 		<module>api-candidates</module>
 		<module>api-catalog</module>
+		<module>api-emails</module>
 		<module>api-clients</module>
 		<module>api-config</module>
 		<module>api-gateway</module>

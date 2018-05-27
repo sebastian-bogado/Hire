@@ -54,8 +54,7 @@ public class RestConfig {
 				.build();
 	}
 
-	@Bean
-	@Scope
+	@Bean("emailServiceRestTemplate")
 	public RestTemplate emailServiceRestTemplate() {
 		LOG.info("Timeout Connect Email server: " + this.timeout);
 		LOG.info("Timeout Read Email server: " + this.timeout);
@@ -79,31 +78,6 @@ public class RestConfig {
 		restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
 		return restTemplate;
 	}
-
-	/*
-
-	@Bean
-	protected OAuth2ProtectedResourceDetails resource() {
-
-		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
-
-		List scopes = new ArrayList<String>(2);
-		scopes.add("SERVICE");
-		//scopes.add("read");
-		resource.setAccessTokenUri(tokenUrl);
-		resource.setClientId(clientInfo);
-		resource.setClientSecret(clientSecret);
-		resource.setGrantType("client_credentials");
-		resource.setScope(scopes);
-		return resource;
-	}
-
-	@Bean
-	public OAuth2RestOperations oauthRestTemplate() {
-		AccessTokenRequest atr = new DefaultAccessTokenRequest();
-		return new OAuth2RestTemplate(resource(), new DefaultOAuth2ClientContext(atr));
-	}
-*/
 
 
 }

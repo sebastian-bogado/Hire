@@ -5,4 +5,4 @@
  \___/| .__/ \___|_| |_|_| |_|_|_|  \___|
       |_|
 
-OpenHire - OAuth2 server        NSU Consulting S.A.              Ver: ${application.version}
+OpenHire - Clients        NSU Consulting S.A.              Ver: ${application.version}

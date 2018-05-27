@@ -3,6 +3,7 @@ package io.nsu.hire.apiusers.service.impl;
 import io.nsu.hire.apiusers.dao.UserApplicationDao;
 import io.nsu.hire.apiusers.exception.UserApplicationExistException;
 import io.nsu.hire.apiusers.model.UserApplication;
+import io.nsu.hire.apiusers.service.EmailService;
 import io.nsu.hire.apiusers.service.UserApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,8 @@ import java.util.Optional;
 public class UserApplicationServiceImpl extends BaseBeanService<UserApplication> implements UserApplicationService {
 	@Autowired
 	private UserApplicationDao userApplicationDao;
+	@Autowired
+	private EmailService emailService;
 	@Value("${expiration.application.days:1}")
 	private Long expirationDays;
 	@Override
@@ -43,4 +46,5 @@ public class UserApplicationServiceImpl extends BaseBeanService<UserApplication>
 		}
 		return userApplicationDao.save(prepareToCreate(userApplication));
 	}
+
 }

@@ -1,0 +1,4 @@
+INSERT INTO `email_account` VALUES (1,'sebastian.bogado@nsuconsulting.com','Palmeras61212');
+INSERT INTO `email_property` VALUES (1,'mail.smtp.auth','true',1),(2,'mail.smtp.starttls.enable','true',1),(3,'mail.smtp.host','smtp.gmail.com',1),(4,'mail.smtp.port','587',1);
+INSERT INTO `email_template` VALUES (1,'create_administration','/email/invitation_email.tpl','email.create_administration.subject',1),(2,'approbed_user','/email/approbe_email.tpl','approbe.petition.email.create_user.subject',1);
+INSERT INTO `email_template_images` VALUES (1,'static/img/email/duhire_logo.png','baseImage'),(2,'static/img/email/duhire_logo.png','baseImage');
